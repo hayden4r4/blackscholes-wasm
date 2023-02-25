@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/haydenrose/projects/blackscholes-wasm/target/debug/build/typenum-9c3c79bbe810cb1c/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/home/haydenrose/projects/blackscholes-wasm/target/debug/build/typenum-9c3c79bbe810cb1c/out/op.rs
