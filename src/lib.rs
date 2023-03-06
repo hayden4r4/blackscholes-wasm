@@ -15,7 +15,6 @@
 //! ```
 //!
 //! See the [Github Repo](https://github.com/hayden4r4/blackscholes-rust/tree/master) for full source code.  Other implementations such as a [npm WASM package](https://www.npmjs.com/package/@haydenr4/blackscholes_wasm) and a [python module](https://pypi.org/project/blackscholes/) are also available.
-
 mod common;
 mod constants;
 mod greeks;
@@ -23,7 +22,4 @@ mod implied_volatility;
 mod inputs;
 mod pricing;
 
-pub use greeks::Greeks;
-pub use implied_volatility::ImpliedVolatility;
 pub use inputs::{Inputs, OptionType};
-pub use pricing::Pricing;

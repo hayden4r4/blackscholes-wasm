@@ -6,8 +6,8 @@ Includes all first, second, and third order Greeks.
   
 ## Usage  
   
-View the [docs](https://docs.rs/blackscholes) for usage and examples.  
+View the [docs](https://docs.rs/blackscholes_wasm) for usage and examples.  
   
 **Other packages available:**  
 Python: [Pypi](https://pypi.org/project/blackscholes-python/)  
-WASM: [npm](https://www.npmjs.com/package/@haydenr4/blackscholes_wasm)  
+Rust: [crates.io](https://crates.io/crates/blackscholes)  

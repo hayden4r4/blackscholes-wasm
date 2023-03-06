@@ -1,13 +1,8 @@
 use crate::{common::*, constants::*, Inputs, OptionType};
-use num_traits::Float;
-pub trait Pricing<T>
-where
-    T: Float,
-{
-    fn calc_price(&self) -> Result<T, String>;
-}
+use wasm_bindgen::prelude::*;
 
-impl Pricing<f32> for Inputs {
+#[wasm_bindgen]
+impl Inputs {
     /// Calculates the price of the option.
     /// # Requires
     /// s, k, r, q, t, sigma.
@@ -15,11 +10,11 @@ impl Pricing<f32> for Inputs {
     /// f32 of the price of the option.
     /// # Example
     /// ```
-    /// use blackscholes::{Inputs, OptionType, Pricing};
+    /// use blackscholes::{Inputs, OptionType};
     /// let inputs = Inputs::new(OptionType::Call, 100.0, 100.0, None, 0.05, 0.2, 20.0/365.25, Some(0.2));
     /// let price = inputs.calc_price().unwrap();
     /// ```
-    fn calc_price(&self) -> Result<f32, String> {
+    pub fn calc_price(&self) -> Result<f32, String> {
         // Calculates the price of the option
         let (nd1, nd2): (f32, f32) = calc_nd1nd2(&self)?;
         let price: f32 = match self.option_type {

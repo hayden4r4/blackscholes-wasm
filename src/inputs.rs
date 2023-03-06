@@ -1,6 +1,8 @@
 use std::fmt::{Display, Formatter, Result as fmtResult};
+use wasm_bindgen::prelude::*;
 
 /// The type of option to be priced (call or put).
+#[wasm_bindgen(inspectable)]
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum OptionType {
     Call,
@@ -17,6 +19,7 @@ impl Display for OptionType {
 }
 
 /// The inputs to the Black-Scholes-Merton model.
+#[wasm_bindgen(inspectable)]
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Inputs {
     /// The type of the option (call or put)
@@ -38,6 +41,7 @@ pub struct Inputs {
 }
 
 /// Methods for calculating the price, greeks, and implied volatility of an option.
+#[wasm_bindgen]
 impl Inputs {
     /// Creates instance ot the `Inputs` struct.
     /// # Arguments
@@ -56,6 +60,7 @@ impl Inputs {
     /// ```
     /// # Returns
     /// An instance of the `Inputs` struct.
+    #[wasm_bindgen(constructor)]
     pub fn new(
         option_type: OptionType,
         s: f32,

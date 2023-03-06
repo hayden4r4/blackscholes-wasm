@@ -1,13 +1,8 @@
-use crate::{constants::*, greeks::Greeks, pricing::Pricing, Inputs};
-use num_traits::Float;
-pub trait ImpliedVolatility<T>: Pricing<T> + Greeks<T>
-where
-    T: Float,
-{
-    fn calc_iv(&self, tolerance: T) -> Result<T, String>;
-}
+use crate::{constants::*, Inputs};
+use wasm_bindgen::prelude::*;
 
-impl ImpliedVolatility<f32> for Inputs {
+#[wasm_bindgen]
+impl Inputs {
     /// Calculates the implied volatility of the option.
     /// Tolerance is the max error allowed for the implied volatility,
     /// the lower the tolerance the more iterations will be required.
@@ -20,11 +15,11 @@ impl ImpliedVolatility<f32> for Inputs {
     /// f32 of the implied volatility of the option.
     /// # Example:
     /// ```
-    /// use blackscholes::{Inputs, OptionType, ImpliedVolatility};
+    /// use blackscholes::{Inputs, OptionType};
     /// let inputs = Inputs::new(OptionType::Call, 100.0, 100.0, Some(0.2), 0.05, 0.2, 20.0/365.25, None);
     /// let iv = inputs.calc_iv(0.0001).unwrap();
     /// ```
-    fn calc_iv(&self, tolerance: f32) -> Result<f32, String> {
+    pub fn calc_iv(&self, tolerance: f32) -> Result<f32, String> {
         let mut inputs: Inputs = self.clone();
 
         let p = self

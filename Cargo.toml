@@ -1,18 +1,23 @@
 [package]
-name = "blackscholes"
+name = "blackscholes_wasm"
 version = "0.18.0"
 edition = "2021"
 license = "MIT"
 description = "Black-Scholes option pricing model calculator"
-repository = "https://github.com/hayden4r4/blackscholes-rust"
-documentation = "https://docs.rs/blackscholes"
+repository = "https://github.com/hayden4r4/blackscholes-wasm"
+documentation = "https://docs.rs/blackscholes_wasm"
 readme = "README.md"
 authors = ["Hayden Rose"]
-keywords = ["finance", "option", "pricing", "blackscholes", "option-pricing"]
+keywords = ["finance", "option", "WASM", "blackscholes", "option-pricing"]
 
-[[bench]]
-name = "pricing"
-harness = false
+[profile.release]
+lto = true
+strip = true
+opt-level = "z"
+codegen-units = 1
+
+[lib]
+crate-type = ["cdylib"]
 
 [dev-dependencies]
 criterion = "0.4.0"
@@ -20,3 +25,7 @@ criterion = "0.4.0"
 [dependencies]
 num-traits = "0.2.15"
 statrs = "0.16.0"
+getrandom = { version = "0.2", features = ["js"] }
+wasm-bindgen = "0.2"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
