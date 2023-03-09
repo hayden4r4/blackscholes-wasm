@@ -2,7 +2,7 @@ use std::fmt::{Display, Formatter, Result as fmtResult};
 use wasm_bindgen::prelude::*;
 
 /// The type of option to be priced (call or put).
-#[wasm_bindgen(inspectable)]
+#[wasm_bindgen]
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum OptionType {
     Call,
